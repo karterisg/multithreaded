@@ -1,5 +1,5 @@
 A. Inroduction
-We develop a multithreaded network application to execute jobs given over the network by the user. The goal is to have worker threads take over the execution of jobs and return their results to the user according to a flow control mechanism.
+I developed a multithreaded network application to execute jobs given over the network by the user. The goal is to have worker threads take over the execution of jobs and return their results to the user according to a flow control mechanism.
 This mechanism is based on the current degree of parallelism (concurrency). For example, suppose that the degree of parallelism is 4. This means that 4 worker threads will be created to run the first 4 available jobs submitted to server (or as many as there are, if less than 4 have been submitted). The rest of the jobs that have been submitted will stay on a queue. If one task out of 4 terminate, then a worker thread should start executing the first job of the queue. If the degree of parallelism changes, the application adapts accordingly, without stopping already running jobs, in case of downgrading parallelism.
 
 Application offer its functionality to the user through 2 processes,
